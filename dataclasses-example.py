@@ -49,6 +49,9 @@ class DataClassPerson:
         #instead, we do this! same effect as above:
         object.__setattr__(self, 'sort_index', self.age)
 
+    def __str__(self):
+        return f"{self.name}, {self.job}, {self.age}" # this is the default __str__ method that can be use to provied a nice string representation of the object
+
 # dataclass will do this initialization for us, so the below is not needed:
     # def __init__(self, name, job, age):
     #     self.name = name
@@ -66,7 +69,7 @@ print(id(DataClassPerson1))
 print(id(DataClassPerson2))
 print(DataClassPerson3)
 print(DataClassPerson3 == DataClassPerson4)
-DataClassPerson1.age = 20 #this will not work because the dataclass is frozen
+# DataClassPerson1.age = 20 #this will not work because the dataclass is frozen ## dataclasses.FrozenInstanceError: cannot assign to field 'age'
 print(DataClassPerson1>DataClassPerson2) # can define the order of the objects and what is greater
 
 # prints:
